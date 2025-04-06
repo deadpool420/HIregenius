@@ -1,0 +1,78 @@
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #007bff;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding-left: 10px;
+}
+
+.logout {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background: white;
+}
+
+h2 {
+  color: #007bff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+/* Profile, Find Jobs, Applications, Settings */
+.profile-page,
+.find-jobs-page,
+.my-applications-page,
+.settings-page,
+.logout-page {
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.job-listing,
+.applied-job {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+}

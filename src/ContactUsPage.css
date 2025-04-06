@@ -1,0 +1,90 @@
+.contact-us-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-form-container {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.submit-btn {
+  background-color: #E67E22;
+  padding: 10px 20px;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #D35400;
+}
+
+.error-message {
+  color: red;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-details h3 {
+  margin-top: 3rem;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.contact-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact-details li {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.google-map {
+  margin-top: 2rem;
+  max-width: 100%;
+  border-radius: 8px;
+}

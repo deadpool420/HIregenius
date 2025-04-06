@@ -1,0 +1,105 @@
+/* Container for the entire job listing page */
+.find-jobs-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Title of the page */
+.find-jobs-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* Container for individual job cards */
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Styling for individual job cards */
+.job-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Job title */
+.job-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+/* Job description */
+.job-description {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Job location and salary styling */
+.job-location, .job-salary {
+  font-size: 14px;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+/* Link styling for the View Details button */
+.view-details-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Styling for when there are no jobs */
+.no-jobs {
+  text-align: center;
+  font-size: 18px;
+  color: #e74c3c;
+  padding: 50px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .find-jobs-container {
+    padding: 20px;
+  }
+
+  .job-list {
+    grid-template-columns: 1fr;
+  }
+
+  .find-jobs-title {
+    font-size: 28px;
+  }
+
+  .job-card {
+    padding: 15px;
+  }
+}

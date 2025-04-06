@@ -1,0 +1,112 @@
+/* src/JobPosterPostJob.css */
+
+/* Main container styling */
+.post-job-page {
+  width: 50%; /* A more compact form width for a professional feel */
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;  /* Slightly rounded corners for a modern, clean look */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* More prominent shadow for depth */
+  max-width: 900px;  /* Maximum width for larger screens */
+}
+
+/* Title Styling */
+.page-title {
+  text-align: center;
+  color: #333;
+  font-size: 32px;  /* Larger title for emphasis */
+  margin-bottom: 24px;
+  font-weight: 600;  /* Bold font for a more formal, professional appearance */
+}
+
+/* Form Layout */
+.post-job-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Larger gap for better readability */
+}
+
+/* Input/Field styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  /* More space between label and input fields */
+}
+
+label {
+  font-weight: 600;
+  color: #444;
+  font-size: 18px; /* Slightly larger label text */
+}
+
+/* Styling for text input, select, and textarea */
+input,
+textarea,
+select {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;  /* Rounded corners for input fields */
+  border: 1px solid #ddd;
+  outline: none;
+  transition: all 0.3s ease; /* Smooth transition for focus and hover effects */
+}
+
+/* Focus styling for inputs */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4CAF50;  /* Green border on focus for visual appeal */
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3); /* Subtle shadow effect */
+}
+
+/* Textarea-specific styles */
+textarea {
+  min-height: 120px;
+  resize: vertical;  /* Allow user to resize vertically */
+}
+
+/* Submit Button styling */
+button.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 18px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover and click */
+  font-weight: 600; /* Bold text for the button */
+}
+
+button.submit-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px); /* Slight lift on hover for a more dynamic feel */
+}
+
+button.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #d9534f; /* Red color for error messages */
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500; /* Slightly bold to stand out */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .post-job-page {
+      width: 80%;  /* Expand form width for smaller screens */
+      padding: 20px;  /* Reduce padding for better mobile layout */
+  }
+
+  .page-title {
+      font-size: 28px;  /* Adjust font size for smaller screens */
+  }
+}
+ 
