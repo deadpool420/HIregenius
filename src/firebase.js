@@ -96,7 +96,7 @@ const fetchAllJobs = async (callback) => {
           return job;
         }));
 
-        console.log("✅ Fetched Jobs:", updatedJobList); // Debugging
+        console.log("✅ Fetched Jobs:", updatedJobList);
         callback(updatedJobList);
       } else {
         console.log("ℹ️ No jobs found in the database.");
@@ -130,24 +130,42 @@ const fetchJobById = async (jobId, callback) => {
 // ✅ Apply for a Job (Job Seeker applies)
 const applyForJob = async (jobId, jobSeekerId, callback) => {
   try {
-    const applicationsRef = ref(db, `applications/${jobId}`); // Store applications under jobId
+    // Fetch job details
+    const jobSnap = await get(ref(db, `jobs/${jobId}`));
+    if (!jobSnap.exists()) throw new Error('Job not found');
+    const job = jobSnap.val();
+
+    // Fetch job seeker details
+    const seekerSnap = await get(ref(db, `jobSeekers/${jobSeekerId}`));
+    if (!seekerSnap.exists()) throw new Error('Job seeker not found');
+    const seeker = seekerSnap.val();
+
+    // Build application data with full details
+    const applicationsRef = ref(db, 'applications');
     const newApplicationRef = push(applicationsRef);
     const applicationId = newApplicationRef.key;
 
     const applicationData = {
       applicationId,
       jobId,
+      jobTitle: job.jobTitle || '',
+      jobLocation: job.jobLocation || '',
+      salary: job.salary || '',
+      jobPosterId: job.postedBy || '',
       jobSeekerId,
+      jobSeekerName: seeker.name || seeker.fullName || '',
+      jobSeekerEmail: seeker.email || '',
       appliedAt: new Date().toISOString(),
+      status: 'Pending',
     };
 
     // Save application data
     await set(newApplicationRef, applicationData);
-    console.log("✅ Applied for job successfully!");
-    callback(true); // Return true if successful
+    console.log("✅ Applied for job successfully with full details!");
+    callback(true);
   } catch (error) {
     console.error("❌ Error applying for job:", error.message);
-    callback(false); // Return false if an error occurs
+    callback(false);
   }
 };
 
@@ -165,5 +183,5 @@ export {
   deleteJobData, 
   fetchAllJobs, 
   fetchJobById, 
-  applyForJob // Export the new function
+  applyForJob 
 };

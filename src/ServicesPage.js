@@ -8,10 +8,17 @@ import './ServicesPage.css';
 const ServicesPage = () => {
   const [jobs, setJobs] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getJobs = async () => {
-      await fetchAllJobs(setJobs);
+      try {
+        await fetchAllJobs(setJobs);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     getJobs();
   }, []);
@@ -33,15 +40,15 @@ const ServicesPage = () => {
       <Header />
 
       <div className="content">
-        <h2>Our Professional Services</h2>
-        <p>
-          At HireGenius, we provide services to both job seekers and employers.
-          Explore our job listings and powerful tools for employers to find the perfect talent.
+        <h2 className="section-title">Our Professional Services</h2>
+        <p className="section-description">
+          At HireGenius, we offer a comprehensive suite of services designed for both job seekers and employers.
+          Explore our job listings and leverage powerful tools to streamline the hiring process.
         </p>
 
         {/* Posted Jobs Section */}
         <section className="posted-jobs">
-          <h3>Job Opportunities for JobSeeker</h3>
+          <h3 className="section-subtitle">Job Opportunities for Job Seekers</h3>
           <div className="search-bar-container">
             <input
               type="text"
@@ -49,56 +56,58 @@ const ServicesPage = () => {
               className="search-bar"
               value={searchQuery}
               onChange={handleSearch}
+              aria-label="Search jobs"
             />
           </div>
-          <div className="job-list">
-            {filteredJobs.length === 0 ? (
-              <p>No job postings available at the moment.</p>
-            ) : (
-              filteredJobs.map((job) => (
-                <div key={job.jobId} className="job-item">
-                  <h4>{job.jobTitle}</h4>
-                  <p><strong>Location:</strong> {job.jobLocation}</p>
-                  <p><strong>Company:</strong> {job.company}</p>
-                  <Link to={`/job-details/${job.jobId}`} className="view-btn">
-                    View Details
-                  </Link>
-                </div>
-              ))
-            )}
-          </div>
+
+          {loading ? (
+            <p>Loading job listings...</p>
+          ) : (
+            <div className="job-list">
+              {filteredJobs.length === 0 ? (
+                <p>No job postings available at the moment.</p>
+              ) : (
+                filteredJobs.map((job) => (
+                  <div key={job.jobId} className="job-item">
+                    <h4>{job.jobTitle}</h4>
+                    <p><strong>Location:</strong> {job.jobLocation}</p>
+                    <p><strong>Company:</strong> {job.company}</p>
+                    <Link to={`/job-details/${job.jobId}`} className="view-btn" aria-label={`View details of ${job.jobTitle}`}>
+                      View Details
+                    </Link>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
         </section>
 
         {/* Job Poster Services Section */}
         <section className="job-poster-services">
-          <h3>Services for Job Posters</h3>
+          <h3 className="section-subtitle">Services for Employers</h3>
           <div className="services-list">
             <div className="service-item">
               <h4>Post a Job</h4>
               <p>
-                Post your job openings to reach qualified candidates who match your company’s needs.
-                It's quick, easy, and efficient.
+                Easily post your job openings to connect with qualified candidates who align with your company's needs.
               </p>
             </div>
             <div className="service-item">
               <h4>Review Applications</h4>
               <p>
-                Review job applications and resumes with ease. Screen top candidates and find the
-                right fit for your company.
+                Streamline the hiring process by reviewing applications and resumes to identify top candidates.
               </p>
             </div>
             <div className="service-item">
               <h4>Access a Talent Pool</h4>
               <p>
-                Browse through a pool of talented professionals and reach out to the most qualified
-                candidates for your roles.
+                Browse through a curated pool of professionals to find the ideal fit for your organization.
               </p>
             </div>
             <div className="service-item">
               <h4>Employer Branding</h4>
               <p>
-                Enhance your employer brand with a customized company profile to attract top-tier
-                talent and stand out in the job market.
+                Enhance your company’s profile and attract top-tier talent by showcasing your brand.
               </p>
             </div>
           </div>

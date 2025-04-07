@@ -1,109 +1,139 @@
-/* Main Container */
+/* Main container for the job posting page */
 .post-job-container {
   display: flex;
-  justify-content: flex-start;
-  height: 100vh;
-  background-color: #f4f7f9;
+  flex-direction: row; /* Align sidebar and form side by side */
 }
 
-/* Sidebar */
+/* Sidebar styling */
 .sidebar {
   width: 250px;
-  background-color: #2f4f4f;
+  background-color: #2c3e50;
   color: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
   height: 100vh;
+  position: fixed;
 }
 
-/* Main Content */
-.post-job-form {
-  flex-grow: 1;
-  padding: 30px;
-  background-color: white;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Form Elements */
-h2 {
-  font-size: 2rem;
+.sidebar-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 15px;
+.sidebar-header h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
-label {
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 15px 0;
+}
+
+.sidebar-link {
+  cursor: pointer;
+  color: #ecf0f1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidebar-link:hover {
+  color: #3498db;
+}
+
+.logout-btn {
+  color: #e74c3c;
   font-weight: bold;
+}
+
+.logout-btn:hover {
+  color: #c0392b;
+}
+
+/* Post job form container */
+.post-job-form {
+  margin-left: 270px; /* Leave space for sidebar */
+  padding: 40px;
+  width: calc(100% - 270px); /* Adjust form width after sidebar */
+  background-color: #f4f7fc;
+}
+
+/* Title for the form */
+.post-job-form h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Form input styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 1.1rem;
   color: #333;
 }
 
-input,
-textarea,
-select {
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  outline: none;
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-textarea {
-  min-height: 120px;
+.form-group textarea {
+  height: 150px;
+  resize: none;
 }
 
-/* Buttons */
+/* Submit button styling */
 .submit-btn {
-  background-color: #4caf50;
+  background-color: #3498db;
   color: white;
   border: none;
-  padding: 12px 16px;
+  padding: 12px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 .submit-btn:hover {
-  background-color: #45a049;
+  background-color: #2980b9;
 }
 
-/* Error Message */
+/* Error message styling */
 .error-message {
-  text-align: center;
+  color: #e74c3c;
   font-size: 1rem;
-  color: #f44336;
   margin-top: 10px;
 }
 
-/* Responsive Design */
+/* Adjust form layout for smaller screens */
 @media (max-width: 768px) {
   .post-job-container {
     flex-direction: column;
   }
 
-  .sidebar {
+  .post-job-form {
+    margin-left: 0;
     width: 100%;
-    height: auto;
-    position: relative;
-    padding: 10px;
   }
 
-  .post-job-form {
-    width: 90%;
-    margin: 20px auto;
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
   }
 }

@@ -1,5 +1,3 @@
-// src/Sidebar.js
-
 import React from 'react';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +12,7 @@ const Sidebar = ({ user }) => {
       <h2>Welcome, {user?.displayName || 'Job Poster'}</h2>
       <nav>
         <ul>
+        <button onClick={() => navigate("/")} className="sidebar-link">Home</button> {/* ✅ Home link added */}
           <li onClick={() => navigate('/job-poster-dashboard')}>Dashboard</li>
           <li onClick={() => navigate('/post-job')}>Post a Job</li>
           <li onClick={() => navigate('/job-poster-profile')}>Profile</li>

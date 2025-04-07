@@ -64,6 +64,7 @@ const JobPosterApplications = () => {
         </div>
         <nav>
           <ul>
+          <button onClick={() => navigate("/")} className="sidebar-link">Home</button> {/* ✅ Home link added */}
             <li onClick={() => navigate('/job-poster-dashboard')} className="nav-link">Dashboard</li>
             <li onClick={() => navigate('/post-job')} className="nav-link">Post a Job</li>
             <li onClick={() => navigate('/job-poster-profile')} className="nav-link">Profile</li>

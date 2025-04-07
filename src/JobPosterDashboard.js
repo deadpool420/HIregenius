@@ -43,19 +43,11 @@ const JobPosterDashboard = () => {
     return () => unsubscribe();
   }, [fetchPostedJobs, navigate]);
 
+  // Handle job deletion
   const handleDeleteJob = async (jobId) => {
-    const confirm = window.confirm("Are you sure you want to delete this job?");
-    if (!confirm) return;
-  
-    try {
-      await deleteJobData(jobId, user.uid);
-      setPostedJobs(prevJobs => prevJobs.filter(job => job.jobId !== jobId));
-    } catch (err) {
-      console.error("❌ Failed to delete job:", err);
-      alert("Failed to delete job.");
-    }
+    await deleteJobData(jobId, user.uid);
+    setPostedJobs(prevJobs => prevJobs.filter(job => job.jobId !== jobId));
   };
-  
 
   return (
     <div className="dashboard-container">
@@ -66,6 +58,7 @@ const JobPosterDashboard = () => {
   </div>
   <nav>
     <ul>
+    <button onClick={() => navigate("/")} className="sidebar-link">Home</button> {/* ✅ Home link added */}
       <li onClick={() => navigate('/job-poster-dashboard')} className="nav-link">Dashboard</li>
       <li onClick={() => navigate('/post-job')} className="nav-link">Post a Job</li>
       <li onClick={() => navigate('/job-poster-profile')} className="nav-link">Profile</li>

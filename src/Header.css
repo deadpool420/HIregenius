@@ -1,94 +1,119 @@
-/* Header Styles */
-.header {
+/* --- HEADER STYLES --- */
+.modern-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #2c3e50;
-  color: #fff;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.logo {
-  flex: 1;
-}
-
-.logo-img {
-  width: 120px;
-  height: auto;
-}
-
-.nav {
+/* --- BRAND / LOGO --- */
+.brand {
   display: flex;
   align-items: center;
-  gap: 20px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .brand-name {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  color: #fff;
-  text-decoration: none;
+  color: #1e1e1e;
 }
 
-.nav-link {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.nav-link:hover {
-  color: #3498db;
-}
-
-.header-buttons {
+/* --- NAVIGATION LINKS --- */
+.nav-links {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  gap: 2rem;
 }
 
-.signup-btn, .logout-btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.signup-btn:hover, .logout-btn:hover {
-  background-color: #2980b9;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.username {
+.nav-links a {
+  text-decoration: none;
+  color: #333;
   font-size: 1rem;
   font-weight: 500;
+  transition: color 0.2s ease-in-out;
 }
 
-/* Responsive Styles */
+.nav-links a:hover {
+  color: #0077ff;
+}
+
+/* --- USER / AUTH BUTTONS --- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.auth-button,
+.logout-button,
+.username-button {
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Signup buttons */
+.auth-button {
+  background-color: #0077ff;
+  color: white;
+}
+
+.auth-button:hover {
+  background-color: #005fd1;
+}
+
+/* Logout button */
+.logout-button {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #d9363e;
+}
+
+/* Username button */
+.username-button {
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.username-button:hover {
+  background-color: #e0e3e8;
+}
+
+/* Responsive tweaks */
 @media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    padding: 10px 20px;
-  }
-
-  .nav {
+  .modern-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 1rem;
   }
 
-  .header-buttons {
+  .nav-links {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 1rem;
+  }
+
+  .header-right {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
   }
 }

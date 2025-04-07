@@ -16,7 +16,9 @@ import ServicesPage from './ServicesPage';
 import JobSeekerProfile from './JobSeekerProfile';
 import JobSeekerJobs from './components/JobSeekerJobs';
 import JobDetails from './components/JobDetails';  // Import JobDetails component
+import MyApplications from './components/MyApplications';  // Import MyApplications component
 import JobPosterApplications from './JobPosterApplications';  // Import the new page
+import JobPosterProfile from './JobPosterProfile';
 
 function App() {
   return (
@@ -27,16 +29,18 @@ function App() {
         <Route path="/job-poster-signup" element={<JobPosterSignup />} />
         <Route path="/job-seeker-login" element={<JobSeekerLogin />} />
         <Route path="/job-poster-login" element={<JobPosterLogin />} />
-        
+
         <Route path="/job-seeker-dashboard" element={<JobSeekerDashboard />}>
           <Route path="profile" element={<JobSeekerProfile />} />
           <Route path="jobs" element={<JobSeekerJobs />} />
+          <Route path="applications" element={<MyApplications />} />  {/* Add MyApplications route */}
         </Route>
-        
+
         <Route path="/job-details/:jobId" element={<JobDetails />} />  {/* Route for job details page */}
-        
+
         {/* Other routes */}
         <Route path="/job-poster-dashboard" element={<JobPosterDashboard />} />
+        <Route path="/job-poster-profile" element={<JobPosterProfile />} />  {/* Add JobPosterProfile route */}
         <Route path="/post-job" element={<JobPosterPostJob />} />
         <Route path="/job-seeker-reset-password" element={<JobSeekerResetPassword />} />
         <Route path="/job-poster-reset-password" element={<JobPosterResetPassword />} />
@@ -44,7 +48,6 @@ function App() {
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/job-poster-applications" element={<JobPosterApplications />} />  {/* Add the new route */}
-        {/* other routes... */}
       </Routes>
     </Router>
   );

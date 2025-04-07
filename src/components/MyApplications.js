@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, get, child } from 'firebase/database';
+import { getDatabase, ref, get } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import './MyApplications.css'; // Add your styles here
 
@@ -21,26 +21,24 @@ const MyApplications = () => {
             const applicationsData = snapshot.val();
             const userAppliedJobs = [];
 
-            // Loop through all the applications and filter by jobSeekerId
-            for (const jobId in applicationsData) {
-              const applications = applicationsData[jobId];
-              for (const applicationId in applications) {
-                const application = applications[applicationId];
-                if (application.jobSeekerId === user.uid) {
-                  // Fetch the job details based on jobId
-                  const jobRef = ref(getDatabase(), `jobs/${jobId}`);
-                  const jobSnapshot = await get(jobRef);
-                  if (jobSnapshot.exists()) {
-                    const job = jobSnapshot.val();
-                    userAppliedJobs.push({
-                      jobId,
-                      jobTitle: job.jobTitle,
-                      company: job.company,
-                      jobLocation: job.jobLocation,
-                      appliedAt: application.appliedAt,
-                      status: 'Under Review', // You can update the status based on your logic
-                    });
-                  }
+            // Loop through all applications and filter by jobSeekerId
+            for (const applicationId in applicationsData) {
+              const application = applicationsData[applicationId];
+              if (application.jobSeekerId === user.uid) {
+                // Fetch job details based on jobId
+                const jobRef = ref(getDatabase(), `jobs/${application.jobId}`);
+                const jobSnapshot = await get(jobRef);
+                if (jobSnapshot.exists()) {
+                  const job = jobSnapshot.val();
+                  userAppliedJobs.push({
+                    jobId: job.jobId,
+                    jobTitle: job.jobTitle,
+                    company: job.company,
+                    jobLocation: job.jobLocation,
+                    salary: job.salary,
+                    status: application.status, // Application status
+                    appliedAt: application.appliedAt, // Time of application
+                  });
                 }
               }
             }
@@ -77,6 +75,7 @@ const MyApplications = () => {
               <h3>{job.jobTitle}</h3>
               <p>Company: {job.company}</p>
               <p>Location: {job.jobLocation}</p>
+              <p>Salary: {job.salary}</p>
               <p>Status: {job.status}</p>
               <p>Applied on: {new Date(job.appliedAt).toLocaleDateString()}</p>
             </div>

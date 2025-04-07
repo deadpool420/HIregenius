@@ -31,10 +31,11 @@ const JobSeekerDashboard = () => {
       <aside className="sidebar">
         <h2 className="brand-title">HireGenius</h2>
         <nav>
+          <button onClick={() => navigate("/")} className="sidebar-link">Home</button> {/* ✅ Home link added */}
           <Link to="profile" className="sidebar-link">Profile</Link>
           <Link to="jobs" className="sidebar-link">Find Jobs</Link>
           <Link to="applications" className="sidebar-link">My Applications</Link>
-          <Link to="settings" className="sidebar-link">Settings</Link>
+         
           <button 
             onClick={() => signOut(auth).then(() => navigate("/"))} 
             className="sidebar-link logout-btn"
@@ -51,7 +52,7 @@ const JobSeekerDashboard = () => {
           <Route path="profile" element={<JobSeekerProfile />} />
           <Route path="jobs" element={<FindJobs />} />
           <Route path="applications" element={<MyApplications />} />
-          <Route path="settings" element={<Settings />} />
+          
         </Routes>
       </main>
     </div>
